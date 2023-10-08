@@ -56,7 +56,7 @@
 #define CHECKDISABLED   { if (getenv (DISABLE)) return NSS_STATUS_NOTFOUND; }
 #define CHECKROOT       { if (geteuid () != 0) { *errnop = EPERM; return NSS_STATUS_UNAVAIL; }}
 #define CHECKUNAVAIL(p) { if (p == NULL) { *errnop = ENOENT; return NSS_STATUS_UNAVAIL; }}
-#define CHECKLAST(p)    { if (p == '\0') { *errnop = ENOENT; return NSS_STATUS_NOTFOUND; }}
+#define CHECKLAST(p)    { if (*p == '\0') { *errnop = ENOENT; return NSS_STATUS_NOTFOUND; }}
 #define BAIL            { free (line); cmdclose (file); file = NULL; break; }
 
 /*
